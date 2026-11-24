@@ -291,12 +291,12 @@ h1,h2,h3,.profile-header h1,.mast h1{font-family:var(--ui-font);font-style:norma
 .home-title,.home-match header,.home-match footer{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .home-title{padding:7px 0 15px;border-bottom:1px solid var(--bd);margin-bottom:16px}
 .home-title h1{font-size:clamp(22px,4vw,34px);margin:0}
-.home-overview{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:14px;align-items:start}
+.home-overview{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
 .home-match,.home-recent,.home-leader{background:var(--card);border:1px solid var(--bd);border-radius:7px}
-.home-match{padding:14px!important}.home-match h2{margin:0}
-.home-match-line{display:grid;align-items:center;grid-template-columns:1fr auto 1fr;gap:12px;padding:24px 0}
-.home-team{display:grid;justify-items:center;gap:7px;text-align:center;font-size:13px}
-.home-match-score{color:var(--tx);font-size:clamp(22px,5vw,38px);font-weight:750;font-variant-numeric:tabular-nums}
+.home-match{padding:clamp(16px,3vw,30px)!important}.home-match h2{margin:0}
+.home-match-line{display:grid;align-items:center;text-align:center;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:clamp(10px,3vw,32px);padding:clamp(28px,6vw,72px) 0}
+.home-team{display:grid;justify-items:center;gap:12px;text-align:center;overflow-wrap:anywhere;font-weight:700;font-size:clamp(14px,2vw,24px)}.home-team .shirt{width:clamp(54px,10vw,116px);height:auto}.home-team .entity-logo{width:clamp(54px,10vw,116px);height:clamp(54px,10vw,116px)}
+.home-match-score{color:var(--tx);font-size:clamp(36px,9vw,108px);line-height:1;white-space:nowrap;font-weight:800;font-variant-numeric:tabular-nums}
 .home-match footer{border-top:1px solid var(--bd);padding-top:10px;font-size:12px}
 .crest-logo{background:transparent!important}.crest-logo .entity-logo{width:34px;height:34px}
 .home-recent{padding:12px 14px}.home-recent .home-heading{margin:0}.home-recent .table-scroll{margin-bottom:0}
@@ -1190,7 +1190,10 @@ function setTheme(v){document.documentElement.dataset.theme=v;try{localStorage.s
 function homeJump(tab,label){return '<button type="button" class="home-link" data-go="'+tab+'">'+esc(label)+'</button>'}
 function homeView(){
  const games=S.games,latest=games[0],leaders=agg(apps(),false);
- const team=(g,i)=>'<div class="home-team">'+crest(g.teams[i],i)+matchLink(g,teamLabel(g.teams[i]))+'</div>';
+ const team=(g,i)=>{
+  const side=g.teams[i],visual=logo(config("team-logo:"+side.name))||shirt(teamColor(side,i),true);
+  return '<div class="home-team">'+visual+matchLink(g,teamLabel(side))+'</div>';
+ };
  const feature=latest?'<section class="result-feature home-match"><header><h2>'+phrase("Latest result","Dernier résultat")+'</h2><span class="sub">'+esc(fd(latest.date))+'</span></header><div class="home-match-line">'+team(latest,0)+matchLink(latest,score(latest,0)+"–"+score(latest,1),"home-match-score")+team(latest,1)+'</div><footer>'+competitionLink(latest.type,matchTypeLabel(latest))+matchLink(latest,phrase("Match report","Fiche du match"))+'</footer></section>':'<section class="card">'+(loaded?t("nogames"):t("loading"))+'</section>';
  const history=games.slice(1,7).map(g=>[matchLink(g,fd(g.date)),competitionLink(g.type),matchLink(g,g.teams.map(teamLabel).join(" / ")),matchLink(g,score(g,0)+"–"+score(g,1))]);
  const ranked=[["g",t("goals")],["a",t("assists")],["c",t("cleansheets")],["ga",t("ga")],["m",t("motmline")],["appearances",phrase("Appearances","Présences")]].map(([stat,title])=>{
