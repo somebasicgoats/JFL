@@ -1,6 +1,6 @@
 # JFL Manager Mode update
 
-Extract this ZIP into the root of `somebasicgoats/JFL`. Keep the folder paths, including `api/`, `matches/`, `tools/` and `.github/`. Commit the files to `main`. The connected JFL Vercel project builds the update automatically.
+Extract this ZIP into the root of `somebasicgoats/JFL`. Keep the folder paths, including `api/`, `matches/`, `tools/`, `.github/` and `package.json`. Commit the files to `main`. The connected JFL Vercel project builds the update automatically.
 
 Use the current **Other** framework preset and root directory `./`. The included `vercel.json` sets the build command, output directory, and share routes. No environment variable or SQL migration is required. The share function reads the same public Supabase tables as the website.
 
@@ -15,3 +15,8 @@ Use the current **Other** framework preset and root directory `./`. The included
 ## Discord previews
 
 After the updated Vercel deployment is ready, use **Copy match link** or **Copy profile link** on the JFL site. The new share URLs include `/share/match/` or `/share/player/` and give Discord the title, description, image and yellow theme color. The preview depends on the new URL, so copy a fresh link when an older link only opens the website.
+
+
+## Deployment notes
+
+Vercel packages the share endpoint from `api/share.js` as an ES module. The GitHub Pages workflow is independent of the Vercel deployment. If Pages reports that the `github-pages` artifact is missing together with an artifact metadata/API error, rerun that workflow; the deploy step cannot publish until the upload step succeeds.
