@@ -20,3 +20,7 @@ After the updated Vercel deployment is ready, use **Copy match link** or **Copy 
 ## Deployment notes
 
 Vercel packages the share endpoint from `api/share.js` as an ES module. The GitHub Pages workflow is independent of the Vercel deployment. If Pages reports that the `github-pages` artifact is missing together with an artifact metadata/API error, rerun that workflow; the deploy step cannot publish until the upload step succeeds.
+
+## Remove the old GitHub Pages workflow
+
+This site now deploys through Vercel. If the repository already has `.github/workflows/match-previews.yml`, delete that file in GitHub and commit the deletion. It schedules GitHub Pages deployments every 30 minutes; those are unnecessary for Vercel and can generate failed-run emails. The Vercel share function handles Discord previews.
