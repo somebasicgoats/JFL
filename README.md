@@ -14,7 +14,7 @@ Use the current **Other** framework preset and root directory `./`. The included
 - New careers let you choose Accessible, Standard or Demanding difficulty. Choose a real JFL season to use its competitive match logs as the rating sample. Custom start dates use the last completed season with match logs, or the preceding 12 months if there is no completed season.
 - In Admin, open **Manager Mode ratings** to see the automatic estimate and optionally set talent or potential. Overrides apply when a new career is created. Clear both fields and save to restore automatic ratings. An existing career keeps the attributes it already simulated.
 - The Squad screen saves manual lineup picks immediately. Auto covers an injured, suspended or absent player temporarily. **Lock projected XI** can save the visible Auto picks into the remaining slots.
-- Season simulation pauses for board decisions and international call-ups. Resolve the prompt after highlights to continue. School league players cannot be called up. New school seasons in new saves start with rivals calibrated to the opening JFL squad. Bankruptcy ends the career and leaves its tables and match reports available until you start a new one.
+- End any active career from the Manager Mode header. The save stays available to review, and you can start a new career. Season simulation pauses for board decisions and international call-ups. Resolve the prompt after highlights to continue. School league players cannot be called up. New school seasons in new saves start with rivals calibrated to the opening JFL squad. Bankruptcy ends the career and leaves its tables and match reports available until you start a new one.
 - Saves are browser storage for the current domain and account.
 
 ## Discord previews
