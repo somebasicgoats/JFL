@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "node tools/build-vercel.mjs",
+  "outputDirectory": "public",
+  "functions": { "api/share.mjs": { "includeFiles": "index.html" } },
+  "rewrites": [
+    { "source": "/share/match/:id", "destination": "/api/share?kind=match&id=:id" },
+    { "source": "/share/player/:id", "destination": "/api/share?kind=player&id=:id" }
+  ]
+}
