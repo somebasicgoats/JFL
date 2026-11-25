@@ -476,10 +476,14 @@ html[data-theme=blue] ::selection{background:#176bb1;color:#fff}
 </style>
 <style>
 html[data-theme="custom"]{color-scheme:dark}
-html[data-theme="custom"] :is(.btn:not(.ghost),.seg button.on,.switches button.on){background:var(--ac2);border-color:var(--ac);color:#fff}
-html[data-theme="custom"] :is(h1,h2,.home-heading h2,.sport-table th){color:var(--ac3)}
-html[data-theme="custom"] :is(input,textarea,select):focus-visible{outline:2px solid var(--ac);outline-offset:2px}
-html[data-theme="custom"] ::selection{background:var(--ac2);color:#fff}
+html[data-theme="custom"] body{background:var(--bg)!important;background-image:none!important}
+html[data-theme="custom"] body:before{display:none}
+html[data-theme="custom"] aside{background:var(--card)!important}
+html[data-theme="custom"] :is(.card,.stat,.chip){background:var(--card2)!important}
+html[data-theme="custom"] :is(.btn:not(.ghost),.seg button.on,.switches button.on){background:var(--card2);border-color:var(--bd);color:var(--tx)}
+html[data-theme="custom"] :is(h1,h2,.home-heading h2,.sport-table th){color:var(--tx)}
+html[data-theme="custom"] :is(input,textarea,select):focus-visible{outline:2px solid var(--tx);outline-offset:2px}
+html[data-theme="custom"] ::selection{background:var(--card2);color:var(--tx)}
 </style>
 </head><body>
 <div class="app">
@@ -1363,16 +1367,19 @@ async function profileExtras(name,settingsOnly=false){
 let userTheme={primary:"#1688ed",secondary:"#102f55",tertiary:"#70c4ff"};
 function applyCustomTheme(){
  const root=document.documentElement;
- root.style.setProperty("--ac",userTheme.primary);
- root.style.setProperty("--ac2",userTheme.secondary);
- root.style.setProperty("--ac3",userTheme.tertiary);
- root.style.setProperty("--menu-active",userTheme.secondary);
+ // Primary controls the page background; secondary controls surfaces/cards;
+ // tertiary controls the normal text color.
+ root.style.setProperty("--bg",userTheme.primary);
+ root.style.setProperty("--card",userTheme.secondary);
+ root.style.setProperty("--card2",userTheme.secondary);
+ root.style.setProperty("--tx",userTheme.tertiary);
+ root.style.setProperty("--mut",userTheme.tertiary);
 }
 function setTheme(v){
  if(v==="custom"&&!ME){v="oled";toast(phrase("Sign in to use your saved custom theme.","Connecte-toi pour utiliser ton thème personnalisé."));}
  document.documentElement.dataset.theme=v;
  if(v==="custom")applyCustomTheme();
- else ["--ac","--ac2","--ac3","--menu-active"].forEach(k=>document.documentElement.style.removeProperty(k));
+ else ["--bg","--card","--card2","--tx","--mut"].forEach(k=>document.documentElement.style.removeProperty(k));
  try{localStorage.setItem("jfl_theme",v)}catch{}
 }
 async function loadUserTheme(){
