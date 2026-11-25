@@ -1995,7 +1995,7 @@ function careerProfile(c){
  if(!p.archived&&p.stats)totals.unshift([c.year,p.stats]);
  const matches=[...c.matches,...c.friendlies].sort((a,b)=>b.date.localeCompare(a.date)).flatMap(r=>{
   const row=r.box.find(x=>x.id===p.id);
-  return row?[[careerDateCell(r.date),careerAction("report",r.names.join(" vs "),false,careerMatchKey(r)),careerAction("report",r.goals.join("–"),false,careerMatchKey(r)),r.friendly?"Friendly":"League",row.min,row.g,row.a,(row.g||0)+"/"+(row.a||0),row.shots,row.saves,row.yc,row.rc,row.rating.toFixed(1)]]:[];
+  return row?[[careerDateCell(r.date),careerAction("report",r.names.join(" vs "),false,careerMatchKey(r)),careerAction("report",r.goals.join("–"),false,careerMatchKey(r)),r.friendly?"Friendly":"League",row.min,row.g,row.a,(row.g||0)+(row.a||0),row.shots,row.saves,row.yc,row.rc,row.rating.toFixed(1)]]:[];
  });
  const starter=Number.isFinite(p.seedTalent)?careerRating(p)-p.seedTalent:NaN;
  const attributes=[["Attack",p.attack],["Defence",p.defence],["Physical",p.engine],["Potential",p.potential]];
@@ -3030,11 +3030,11 @@ function careerFixturesView(c){
 function careerMatchKey(r){return [r.date,r.ids[0],r.ids[1],r.friendly].join(":")}
 const careerStatCols=[["gp","Apps"],["starts","Starts"],["min","Min"],["g","G"],["a","A"],["ga","G/A"],["shots","Shots"],["pass","Passes"],["complete","Pass %"],["cs","CS"],["saves","Saves"],["yc","YC"],["rc","RC"],["rating","Rating"]];
 function careerStatCell(stats,key){
- if(key==="ga")return (stats.g||0)+"/"+(stats.a||0);
+ if(key==="ga")return (stats.g||0)+(stats.a||0);
  if(key==="rating"||key==="complete")return stats.gp?careerValue(stats,key).toFixed(1):"—";
  return stats[key]??"—";
 }
-function careerValue(p,k){if(k==="rating")return p.rating/Math.max(1,p.gp);if(k==="complete")return 100*p.complete/Math.max(1,p.pass);return p[k]}
+function careerValue(p,k){if(k==="ga")return (p.g||0)+(p.a||0);if(k==="rating")return p.rating/Math.max(1,p.gp);if(k==="complete")return 100*p.complete/Math.max(1,p.pass);return p[k]}
 function careerLeagueView(c){
  const history=c.seasons.find(h=>String(h.year)===careerHistory),standings=history?.table||careerStandings(c);
  const entries=history?.scorers||[...c.players,...(c.seasonDepartures||[]),...c.opponents].map(p=>({id:p.id,name:p.name,club:careerClub(c,p.club||"jfl"),...p.stats}));
