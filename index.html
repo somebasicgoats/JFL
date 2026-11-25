@@ -511,13 +511,13 @@ html[data-theme="custom"] ::selection{background:var(--card2);color:var(--tx)}
 @media(prefers-reduced-motion:reduce){.live-mini .pitch-dot,.live-mini .replay-ball{transition:none}}
 </style><style>
 .career-desk{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;max-width:1180px;margin-inline:auto}
-.career-desk .manager-header{padding:14px 20px;margin:0;align-items:center;background:var(--card);border-left:3px solid #73c7ad}
+.career-desk .manager-header{padding:14px 20px;margin:0;align-items:center;background:var(--card);border-left:3px solid var(--ac)}
 .career-desk .manager-header h1{font-size:clamp(1.35rem,3vw,2rem);margin:0}.career-desk .manager-header p{margin:4px 0 0}
 .career-desk .manager-header .sub{display:none}.career-desk .manager-strip{margin:0;padding:8px 14px;display:flex;gap:24px;flex-wrap:wrap}
 .manager-nav{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--bd);padding:0 0 4px;flex-wrap:wrap}
-.manager-nav .switches{display:flex;gap:2px;border:0}.manager-nav .switches button{white-space:nowrap}
-.manager-nav label{margin-left:auto}.manager-nav select{max-width:100%;padding:6px 9px}
-.manager-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+
+
 .manager-team-head{display:flex;align-items:center;gap:18px;background:linear-gradient(115deg,color-mix(in srgb,var(--club) 24%,var(--card)),var(--card));border:1px solid var(--bd);border-radius:14px;padding:18px;margin:0 0 14px}
 .manager-team-head .manager-emblem{width:74px;height:74px;flex:none}.manager-team-head h2{margin:0}.manager-team-head p{margin:6px 0 0;color:var(--mut)}
 .manager-team-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:12px}.manager-team-grid>.career-section{margin:0}
@@ -528,18 +528,59 @@ html[data-theme="custom"] ::selection{background:var(--card2);color:var(--tx)}
 .manager-spot>span{background:#0b2722;color:#c2eee1;font-weight:700;padding:2px 5px;border-radius:4px}
 .manager-spot button{background:#102a26;color:white;border:1px solid #608b7a;border-radius:5px;padding:4px;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .manager-spot button:focus-visible{outline:2px solid #e9e87b}
-.manager-fold{margin-top:12px}.manager-fold>summary{cursor:pointer;font-weight:700;padding:9px 3px}.manager-fold[open]>summary{margin-bottom:8px}
+
 .career-match-columns:has(.live-mini){display:block}.career-match-columns:has(.live-mini)>aside{display:block;background:none;padding:0;border:0}
 .live-mini{height:auto;aspect-ratio:1.9;margin:0;background:repeating-linear-gradient(90deg,#175040 0 8.33%,#19493b 8.33% 16.66%)}
 .live-mini .pitch-dot{transition:left .23s ease-out,top .23s ease-out}.live-mini .replay-ball{transition:left .16s linear,top .16s linear}
 .live-team-link{min-width:0;border:0;background:transparent;color:inherit;text-decoration:underline;text-underline-offset:4px;padding:4px;overflow-wrap:anywhere;font-weight:700}.manager-live-controls{position:sticky;bottom:0;padding:8px 0;background:var(--card);z-index:5}
 @media(max-width:680px){
  .career-desk .manager-header{flex-direction:row;gap:6px;padding:10px;flex-wrap:wrap}.career-desk .manager-strip{gap:14px}
- .manager-team-grid{grid-template-columns:minmax(0,1fr)}.manager-nav{gap:5px}.manager-nav .switches button{padding:7px 5px;font-size:.76rem}
- .manager-nav select{font-size:.76rem}.manager-formation{aspect-ratio:.94}.manager-team-head{padding:11px}
+ .manager-team-grid{grid-template-columns:minmax(0,1fr)}.manager-nav{gap:5px}
+ .manager-formation{aspect-ratio:.94}.manager-team-head{padding:11px}
  .live-mini{aspect-ratio:1.58}.live-mini .pitch-dot{width:15px}
 }
 @media(prefers-reduced-motion:reduce){.live-mini .pitch-dot,.live-mini .replay-ball{transition:none}}
+</style>
+<style>
+.career-desk{max-width:none;margin:0;gap:14px}
+.career-desk .manager-header{border:1px solid var(--bd);border-left:3px solid var(--ac);background:var(--card);color:var(--tx)}
+.career-desk .manager-strip{background:var(--card);color:var(--tx);border-color:var(--bd)}
+.career-desk .manager-strip small{color:var(--mut)}
+.career-desk .manager-strip span+span{border-color:var(--bd)}
+.career-workspace .career-section{border-color:var(--bd);background:var(--card)}
+.career-desk .manager-nav{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));align-items:stretch;gap:1px;justify-content:stretch;padding:4px;margin:0;background:var(--card);border:1px solid var(--bd);border-radius:8px}
+.career-desk .manager-nav button{display:block;text-align:center;min-width:0;min-height:44px;white-space:normal;padding:7px 4px;border-radius:5px;border:1px solid transparent;color:var(--mut);background:transparent;font-size:.78rem}
+.career-desk .manager-nav button:hover{color:var(--tx);background:var(--card2)}
+.career-desk .manager-nav button[aria-pressed=true]{background:color-mix(in srgb,var(--ac) 12%,var(--card));border-color:color-mix(in srgb,var(--ac) 45%,var(--bd));color:var(--ac)}
+.manager-count{color:var(--ac);font-variant-numeric:tabular-nums}
+.manager-lineup-workspace{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(270px,1fr);gap:14px;align-items:start;margin-bottom:14px}
+.manager-lineup-workspace>.career-section,.manager-lineup-controls>.career-section:first-child{margin-top:0}
+.manager-lineup-workspace .manager-formation{max-width:none;aspect-ratio:1.34;margin:0}
+.lineup-status{color:var(--mut);min-height:1.4em;margin:0 0 12px}
+.manager-lineup-controls .career-form{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:end}
+.manager-lineup-controls .career-form :is(label,select){width:100%;min-width:0}
+.manager-lineup-controls .career-form button{justify-self:stretch}
+.lineup-reserves{display:grid;gap:4px}
+.lineup-reserve{display:grid;grid-template-columns:2.15em minmax(0,1fr) auto;gap:7px;align-items:center;min-height:37px;padding:4px 8px;text-align:left;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:5px}
+.lineup-reserve b{color:var(--ac);font-variant-numeric:tabular-nums}
+.lineup-reserve small{color:var(--mut)}
+.manager-spot [data-lineup-slot]{display:flex;justify-content:center;align-items:center;gap:5px;min-height:30px;touch-action:none}
+.manager-spot [data-lineup-slot] span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.manager-spot [data-lineup-slot] b{color:#f5da80}
+[data-lineup-player]:enabled{cursor:grab;user-select:none}.lineup-reserve{touch-action:pan-y}.lineup-reserve b{touch-action:none;display:block}
+[data-lineup-player][aria-pressed=true],.manager-spot [data-lineup-slot].lineup-over{outline:2px solid var(--ac);outline-offset:1px}
+.lineup-drag-label{position:fixed;z-index:10000;pointer-events:none;transform:translate(-50%,-125%);padding:7px 12px;background:var(--card);border:1px solid var(--ac);border-radius:5px;color:var(--tx);font-weight:700;white-space:nowrap}
+.manager-team-head{background:var(--card);border-left:3px solid var(--ac)}
+.manager-match-sidebar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.manager-match-sidebar>section{min-width:0}.manager-match-sidebar .replay-feed{max-height:160px;overflow:auto}
+@media(max-width:1020px){.career-desk .manager-nav{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media(max-width:720px){
+ .career-desk .manager-nav{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .manager-lineup-workspace{grid-template-columns:minmax(0,1fr)}
+ .manager-lineup-workspace .manager-formation{aspect-ratio:.98}
+ .manager-spot [data-lineup-slot]{gap:2px;padding:3px 2px}
+ .manager-match-sidebar{grid-template-columns:minmax(0,1fr)}
+}
 </style>
 </head><body>
 <div class="app">
@@ -1387,12 +1428,6 @@ async function loadAll(){if(!sb)return;try{var nm=["games","submissions","awards
  teamNames=r[7].data.find(x=>x.key==="team_names")?.value||{};PTS=Object.assign({},DEFPTS);var st=r[7].data.filter(function(x){return x.key==="ballon"})[0];if(st&&st.value)Object.keys(DEFPTS).forEach(function(k){if(st.value[k]!=null&&!isNaN(+st.value[k]))PTS[k]=+st.value[k]});
  leagueSettings=Object.fromEntries(r[7].data.map(x=>[x.key,x.value]));await loadGroups();luInit();loaded=true;rerender()}catch(e){loaded=true;rerender();toast(em(e)==="PGRST125"?t("badurl"):t("cantload")+": "+em(e))}}
 /* ---------- render ---------- */
-document.addEventListener("change",e=>{
- if(e.target.id!=="manager-more"||!e.target.value)return;
- careerTab=e.target.value;
- if(/^#manager\/(match|team)\//.test(location.hash))rememberView();
- render();
-});
 function render(){clearInterval(chatTimer);refreshLeagueTitle();nav();var v=$("view");v.onclick=null;v.onchange=null;v.oninput=null;v.onsubmit=null;
  if(tab==="home"){v.innerHTML=homeView()+groupDashboard();(v.querySelector(".result-feature")||v.firstElementChild).insertAdjacentHTML("afterend",'<section id="home-polls" hidden class="card"></section>');leagueFeed($("home-polls"),true)}else if(tab==="notifications"){v.innerHTML='<header class="page-heading"><h1>Notifications</h1></header><section class="card" id="league-feed" aria-live="polite">Loading…</section>';leagueFeed($("league-feed"),false)}else if(tab==="collection"){v.innerHTML='<header class="page-heading"><h1>Card room</h1></header><section id="packs" class="card">Loading…</section>';packRoom($("packs"))}else if(tab==="group"){v.innerHTML=groupPage()}else if(tab==="manager"){v.innerHTML=careerDashboard();bindCareer(v)}else if(tab==="match"){v.innerHTML=detailView();bindChat();if($("report-edit"))$("report-edit").onclick=()=>{S.edit=selectedGame;tab="add";rememberView();render();window.scrollTo(0,0)}}else if(tab==="records"){v.innerHTML=recordsView();bindRecordBook(v)}else if(tab==="games"){v.innerHTML=gamesView();v.onchange=e=>{if(e.target.id==="match-date")matchDate=e.target.value;else if(e.target.id==="match-type")matchType=e.target.value;else return;matchLimit=6;render()};v.onclick=function(e){var b=e.target.closest("button");if(!b||!db)return;var d=b.getAttribute("data-del"),ed=b.getAttribute("data-ed"),gm=b.getAttribute("data-gm");
   if(b.id==="more-matches"){matchLimit+=6;render();return}if(b.id==="reset-matches"){matchDate="";matchType="all";matchLimit=6;render();return}if(gm){gmode=gm;render();return}if(ed){S.edit=ed;tab="add";render();window.scrollTo(0,0);return}
@@ -2760,13 +2795,14 @@ function careerDevelopmentView(c){
   '<p class="hint">Young players develop fastest. Physical decline starts at 30 for outfield players and 33 for goalkeepers. Competitive JFL performances and player cards set opening ratings. Every session develops several attributes. Training, age and career results change them as the save progresses.</p>'+
   metricTable(["Player","Pos","Age","Starting talent","Ability","Potential","Change","Real GP","Individual plan"],rows));
 }
-function managerFold(title,content){return '<details class="card career-section manager-fold"><summary>'+esc(title)+'</summary>'+content+'</details>'}
 function managerNav(c){
- const primary=[["club","Overview"],["squad","My team"],["fixtures","Matches"],["league","League"]];
- const secondary=careerTabs.filter(([id])=>!primary.some(([key])=>key===id));
- return '<nav class="manager-nav" aria-label="Manager Mode">'+segments("career",careerTab,primary)+
- '<label><span class="manager-sr">More sections</span><select id="manager-more"><option value="">More</option>'+
- secondary.map(([id,title])=>'<option value="'+id+'"'+(id===careerTab?' selected':'')+'>'+title+(id==="inbox"&&c.unread?' ('+c.unread+')':'')+'</option>').join("")+'</select></label></nav>';
+ const tabs=[["club","Overview"],["squad","My lineup"],["fixtures","Matches"],["league","League"],
+  ["training","Training"],["market","Recruitment"],["inbox","Inbox"],["development","Development"],
+  ["international","National teams"],["alumni","Alumni"],["settings","Settings"]];
+ const active=careerTab==="match-report"?"fixtures":careerTab==="team-page"?"league":careerTab;
+ return '<nav class="manager-nav" aria-label="Manager Mode">'+tabs.map(([id,label])=>
+  '<button type="button" data-switch="career" data-value="'+id+'" aria-pressed="'+(active===id)+'">'+
+  esc(label)+(id==="inbox"&&c.unread?' <span class="manager-count">'+c.unread+'</span>':'')+'</button>').join("")+'</nav>';
 }
 function managerClubLink(c,id,label=careerClub(c,id)){
  return '<a class="career-match-link" href="#manager/team/'+encodeURIComponent(id)+'">'+esc(label)+'</a>';
@@ -2824,13 +2860,13 @@ function careerClubView(c){
  return nextMatch+careerSection("Match centre",'<p class="manager-coaches">Coaches · '+careerCoaches.join(" and ")+'</p><div class="manager-strip"><span><small>League position</small>'+rank+' / '+c.clubs.length+'</span><span><small>Squad cohesion</small>'+Math.round((c.cohesion||0)*2)+'%</span></div>'+
   (c.boardEvent&&!c.ended?'<p><button type="button" class="btn ghost" data-switch="career" data-value="inbox">Board decision pending</button></p>':'')+
   metricTable(["Date","Opponent","Venue","Result","Score"],ownResults))+
-  '<div class="career-grid">'+managerFold("League registration",'<p>Current position: '+rank+' · Season fee '+careerMoney(tier.fee)+'</p>'+lic+
+  '<div class="career-grid">'+careerSection("League registration",'<p>Current position: '+rank+' · Season fee '+careerMoney(tier.fee)+'</p>'+lic+
   '<small class="hint">Career admission criteria are simulated. The CPL is an expansion application in this career.</small>')+
- managerFold("Club kit",'<div class="career-kit">'+kit+'</div>'+careerForm("kit",
+ careerSection("Club kit",'<div class="career-kit">'+kit+'</div>'+careerForm("kit",
   field("Home","home",'type="color" value="'+safeColor(c.kit.home)+'"')+field("Away","away",'type="color" value="'+safeColor(c.kit.away)+'"')+
   field("Trim","trim",'type="color" value="'+safeColor(c.kit.trim)+'"')+careerLabel("Pattern",careerChoose("style",[["solid","Solid"],["stripe","Vertical stripes"],["hoop","Hoops"],["sash","Sash"]],c.kit.style)),"Save kit"))+'</div>'+
- '<div class="career-grid">'+managerFold("Recent notifications",'<ul>'+c.inbox.slice(0,5).map(m=>'<li><span>'+esc(m.text)+'</span><small>'+esc(careerWhen(m.date))+'</small></li>').join("")+'</ul>')+
- managerFold("Finances",metricTable(["Date","Transaction","CAD"],c.ledger.slice(0,10).map(r=>[careerDateCell(r.date),esc(r.label),careerMoney(r.amount)])))+'</div>';
+ '<div class="career-grid">'+careerSection("Recent notifications",'<ul>'+c.inbox.slice(0,5).map(m=>'<li><span>'+esc(m.text)+'</span><small>'+esc(careerWhen(m.date))+'</small></li>').join("")+'</ul>')+
+ careerSection("Finances",metricTable(["Date","Transaction","CAD"],c.ledger.slice(0,10).map(r=>[careerDateCell(r.date),esc(r.label),careerMoney(r.amount)])))+'</div>';
 }
 function careerAdmission(c,next){
  const rank=careerStandings(c).findIndex(t=>t.id==="jfl")+1;
@@ -2850,24 +2886,99 @@ function careerAgeLabel(p,date){
 }
 function careerSquadView(c){
  const xi=careerBuildXI(c,c.players,c.formation,c.selection);
- let available=0;for(const p of c.players)available+=+careerAvailable(p,c);
+ const starters=new Set(xi.map(row=>row.p.id));
+ const available=c.players.filter(p=>careerAvailable(p,c)).length;
  const registration=c.players.map(p=>[careerPlayer(p)+nationalityFlag(p.country),esc(p.pos),careerAgeLabel(p,c.start),careerRating(p),Math.floor(p.potential),Math.round(p.fitness),Math.round(p.morale),
   p.injury?p.injury+" days injured":p.suspension?p.suspension+" match ban":p.awayUntil>=c.date?"International duty":"Available",p.stats.gp,p.stats.g,p.stats.a,careerStatCell(p.stats,"ga"),p.wage?careerMoney(p.wage)+" / wk through "+p.until:"Amateur",careerAction("conversation","Talk",false,p.id)]);
- const slots=careerShape[c.formation].map((pos,i)=>{
-  const pinned=c.players.find(p=>p.id===c.selection[i]),projected=xi.find(row=>row.slot===i)?.p;
-  const options=[["","Auto"+(projected?" · "+projected.name:"")],...c.players.map(p=>[p.id,p.name+" · "+p.pos])];
-  const note=pinned&&pinned!==projected?'<small class="hint">Temporary cover: '+esc(projected?.name||"Vacant")+'</small>':"";
-  return '<div id="career-slot-'+i+'">'+careerLabel(String(i+1)+" · "+pos,careerChoose("slot"+i,options,c.selection[i]||""))+note+'</div>';
+ const map=careerShape[c.formation].map((pos,slot)=>({pos,slot,p:xi.find(row=>row.slot===slot)?.p}));
+ const pitch=careerFormationPitch(map,({p,slot,pos})=>'<button type="button" data-lineup-slot="'+slot+'" data-lineup-player="'+esc(p?.id||"")+'" aria-pressed="false" aria-label="'+esc(pos+" · "+(p?.name||"Vacant"))+'" '+(c.ended?'disabled':'')+'>'+
+  (p?'<b>'+kitNumber(c,p)+'</b><span>'+esc(p.name)+'</span>':'<span>Vacant</span>')+'</button>');
+ const bench=c.players.filter(p=>!starters.has(p.id)).map(p=>{
+  const ready=careerAvailable(p,c);
+  return '<button type="button" class="lineup-reserve" data-lineup-player="'+esc(p.id)+'" aria-pressed="false" '+(!ready||c.ended?"disabled":"")+'>'+
+   '<b>'+kitNumber(c,p)+'</b><span>'+esc(p.name)+'</span><small>'+esc(ready?p.pos:"Unavailable")+'</small></button>';
  }).join("");
- const map=careerShape[c.formation].map((pos,slot)=>({pos,slot,name:xi.find(row=>row.slot===slot)?.p.name||"Vacant"}));
- return careerSection("Starting XI",careerFormationPitch(map,row=>'<button type="button" data-career="focus-slot" data-value="'+row.slot+'">'+esc(row.name)+'</button>')+
- '<details class="manager-fold" id="manager-lineup-editor"><summary>Formation and lineup changes</summary>'+careerForm("tactics",careerLabel("Formation",careerChoose("formation",Object.keys(careerShape).map(x=>[x,x]),c.formation))+
- careerLabel("Mentality",careerChoose("mentality",[["cautious","Cautious"],["balanced","Balanced"],["attack","Attacking"]],c.mentality))+
- careerLabel("Pressing",careerChoose("press",[["low","Low block"],["medium","Mid block"],["high","High press"]],c.press)),"Save tactics")+
- careerForm("selection",'<div class="career-lineup">'+slots+'</div>',"Save starting XI")+
- '<div class="manager-actions">'+careerAction("lock-xi","Lock projected XI",!xi.length)+careerAction("auto-xi","Reset lineup to automatic",!c.selection.some(Boolean))+'</div></details>')+
- '<details class="card career-section manager-fold"><summary>Full squad · '+available+' available</summary>'+
- metricTable(["Player","Pos","Age","Ability","Potential","Fitness","Morale","Status","Apps","G","A","G+A","Terms","Actions"],registration)+'</details>';
+ const tactics=careerForm("tactics",careerLabel("Formation",careerChoose("formation",Object.keys(careerShape).map(x=>[x,x]),c.formation))+
+  careerLabel("Mentality",careerChoose("mentality",[["cautious","Cautious"],["balanced","Balanced"],["attack","Attacking"]],c.mentality))+
+  careerLabel("Pressing",careerChoose("press",[["low","Low block"],["medium","Mid block"],["high","High press"]],c.press)),"Save tactics");
+ const controls=careerSection("Tactics",tactics+(!c.ended&&c.selection.some(Boolean)?careerAction("auto-xi","Use automatic lineup"):""))+
+  careerSection("Bench",'<div class="lineup-reserves">'+(bench||'<p>No reserves.</p>')+'</div>');
+ const message=c.ended?"Lineup from your finished career.":"Drag a player to a position, or select a player and tap a position.";
+ return '<div class="manager-lineup-workspace" data-lineup-editor>'+careerSection("Starting XI",'<p class="lineup-status" data-lineup-status role="status">'+message+'</p>'+pitch)+
+  '<div class="manager-lineup-controls">'+controls+'</div></div>'+
+  careerSection("Full squad · "+available+" available",metricTable(["Player","Pos","Age","Ability","Potential","Fitness","Morale","Status","Apps","G","A","G+A","Terms","Actions"],registration));
+}
+function moveCareerLineupPlayer(c,id,target){
+ if(c.ended||!Number.isInteger(target)||!careerShape[c.formation][target])return false;
+ const player=c.players.find(p=>p.id===id);
+ if(!player||!careerAvailable(player,c))return false;
+ const xi=careerBuildXI(c,c.players,c.formation,c.selection);
+ const source=xi.find(row=>row.p.id===id)?.slot;
+ if(source===target)return false;
+ // Pin the visible XI before editing so auto-selected players in other positions stay put.
+ const picks=Array(careerShape[c.formation].length).fill("");
+ for(const row of xi)picks[row.slot]=row.p.id;
+ if(source!==undefined)picks[source]=picks[target];
+ picks[target]=id;
+ c.selection=picks;
+ return true;
+}
+function bindLineupEditor(view,c){
+ const editor=view.querySelector("[data-lineup-editor]");
+ if(!editor||!c||c.ended)return;
+ const status=editor.querySelector("[data-lineup-status]");
+ let selected="",gesture=null,ignoreClick=false;
+ const select=(button)=>{
+  selected=button?.dataset.lineupPlayer||"";
+  for(const card of editor.querySelectorAll("[data-lineup-player]"))card.setAttribute("aria-pressed",String(Boolean(selected)&&card.dataset.lineupPlayer===selected));
+  status.textContent=selected?"Select the position to move "+c.players.find(p=>p.id===selected).name+" to.":"Drag a player to a position, or select a player and tap a position.";
+ };
+ const place=(id,button)=>{
+  const slot=Number(button?.dataset.lineupSlot);
+  if(!moveCareerLineupPlayer(c,id,slot))return false;
+  careerSave();render();
+  const next=view.querySelector('[data-lineup-slot="'+slot+'"]');
+  next?.focus({preventScroll:true});
+  view.querySelector("[data-lineup-status]").textContent=c.players.find(p=>p.id===id).name+" moved to "+careerShape[c.formation][slot]+". Lineup saved.";
+  return true;
+ };
+ editor.onclick=e=>{
+  if(ignoreClick){ignoreClick=false;return}
+  const card=e.target.closest("[data-lineup-player]");
+  if(!card||card.disabled)return;
+  if(selected&&card.dataset.lineupSlot!==undefined&&place(selected,card))return;
+  select(selected===card.dataset.lineupPlayer?null:card);
+ };
+ editor.onkeydown=e=>{if(e.key==="Escape")select(null)};
+ editor.onpointerdown=e=>{
+  const card=e.target.closest("[data-lineup-player]");
+  if(!e.isPrimary||e.button!==0||!card?.dataset.lineupPlayer||card.disabled)return;
+  if(e.pointerType==="touch"&&card.classList.contains("lineup-reserve")&&!e.target.closest("b"))return;
+  ignoreClick=false;
+  gesture={id:e.pointerId,player:card.dataset.lineupPlayer,x:e.clientX,y:e.clientY,card};
+  card.setPointerCapture(e.pointerId);
+ };
+ editor.onpointermove=e=>{
+  if(gesture?.id!==e.pointerId)return;
+  if(!gesture.ghost&&Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)<8)return;
+  if(!gesture.ghost){
+   gesture.ghost=document.createElement("span");
+   gesture.ghost.className="lineup-drag-label";
+   gesture.ghost.textContent=c.players.find(p=>p.id===gesture.player).name;
+   document.body.append(gesture.ghost);
+  }
+  gesture.ghost.style.left=e.clientX+"px";gesture.ghost.style.top=e.clientY+"px";
+  gesture.over?.classList.remove("lineup-over");
+  gesture.over=document.elementFromPoint(e.clientX,e.clientY)?.closest("[data-lineup-slot]");
+  gesture.over?.classList.add("lineup-over");
+ };
+ const finish=e=>{
+  if(gesture?.id!==e.pointerId)return;
+  const {ghost,over,player}=gesture;gesture=null;
+  ghost?.remove();over?.classList.remove("lineup-over");
+  if(ghost){ignoreClick=true;if(e.type==="pointerup"&&over)place(player,over)}
+ };
+ editor.onpointerup=finish;editor.onpointercancel=finish;editor.onlostpointercapture=finish;
 }
 const careerDrills={
  balanced:[50,50,"Small-sided play across the centre of the pitch."],
@@ -3056,10 +3167,10 @@ function careerLiveMatch(data=null){
  if(starting.some(line=>line.length<7)){settle();careerOpenMatch(careerMatchKey(report));careerDecision(c);return}
  const names=sides.map(id=>careerClub(c,id));
  const dialog=careerModal("Live match",
-  '<div data-live-score></div><div class="career-match-columns"><div data-live-pitch><div class="replay-pitch live-mini" aria-label="Simulated player positions"><div class="pitch-lines"><i></i><b></b><em></em></div><span class="replay-ball"></span></div><p class="manager-play-status" data-play-status>Kickoff</p></div><aside><details class="manager-fold"><summary>Tactics and substitutions</summary>'+
+  '<div data-live-score></div><div class="career-match-columns"><div data-live-pitch><div class="replay-pitch live-mini" aria-label="Simulated player positions"><div class="pitch-lines"><i></i><b></b><em></em></div><span class="replay-ball"></span></div><p class="manager-play-status" data-play-status>Kickoff</p></div><aside><div class="manager-match-sidebar"><section><h3>Tactics and substitutions</h3>'+
   '<label>Mentality '+careerChoose("mentality",[["cautious","Cautious"],["balanced","Balanced"],["attack","Attacking"]],tactics.mentality)+'</label> '+
   '<label>Pressing '+careerChoose("press",[["low","Low"],["medium","Medium"],["high","High"]],tactics.press)+'</label>'+
-  '<div data-live-sub></div></details><details class="manager-fold"><summary>Match events</summary><ol class="replay-feed" data-live-events></ol></details></aside></div>'+
+  '<div data-live-sub></div></section><section><h3>Match events</h3><ol class="replay-feed" data-live-events></ol></section></div></aside></div>'+
   '<div class="manager-actions manager-live-controls"><button class="btn" data-run>Play</button><button class="btn ghost" data-finish>Sim to full time</button>'+
   '<button class="btn" data-live-report hidden>Open match report</button></div>');
  dialog.classList.add("career-wide");
@@ -3287,9 +3398,9 @@ function careerReportView(c){
   '<div class="career-grid">'+careerSection("Match stats",
   careerMatchMetrics(names,report.xg,shots,passes)+(standout?'<p class="career-standout">Player of the match · '+careerPlayer(standout)+' <strong>'+standout.rating.toFixed(1)+'</strong></p>':"")+
   (events.length?careerAction("replay","Watch highlights",false,careerSession):""))+careerSection("Match timeline",eventsList)+'</div>'+
-  '<details class="card career-section manager-fold"><summary>Starting lineups</summary>'+careerLineupMaps(names,starters)+'</details>'+
+  careerSection("Starting lineups",careerLineupMaps(names,starters))+
   table("Substitutions",subs.map(e=>[e.minute+"′",esc(names[ids.indexOf(e.club)]),eventPlayer(e,"outId",e.outcome),eventPlayer(e,"scorerId",e.scorer)]),["Min","Club","Off","On"])+
-  '<details class="card career-section manager-fold"><summary>Player ratings and statistics</summary>'+metricTable(columns,boxRows)+'</details>';
+  careerSection("Player ratings and statistics",metricTable(columns,boxRows));
 }
 function careerFixtureRow(r){
  const key=careerMatchKey(r);
@@ -3675,6 +3786,7 @@ function bindCareerTables(view){
 }
 function bindCareer(v){
  bindCareerTables(v);
+ bindLineupEditor(v,careerState);
  if(careerState?.ended&&!careerRestart){
   v.querySelectorAll("[data-career-form]:not([data-career-form=match-settings]) :is(button,select,input)").forEach(el=>el.disabled=true);
   const readable=new Set(["new-career","report","replay","team","archive","read","conversation","focus-slot","player-profile","player-back","fixtures-back","preview"]);
